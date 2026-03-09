@@ -1,0 +1,226 @@
+/* Step 5: Box Model Fix — applied globally to every element
+------------------------------------*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Color Palette
+   #ffffff  - White (background)
+   #1a1a2e  - Dark Navy (header text)
+   #4a4e69  - Muted Slate (body text)
+   #9a8c98  - Dusty Mauve (accents / h2)
+   #c9ada7  - Soft Rose (h3 / borders)
+   #f2e9e4  - Blush Cream (alternating section bg)
+*/
+
+/* Global Styles
+------------------------------------*/
+body {
+    background-color: #ffffff;
+    color: #4a4e69;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    line-height: 1.8;
+    /* Step 3d: margin set to 0 to remove the default white border around the page */
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Orbitron', monospace;
+    font-size: 52px;
+    font-weight: 900;
+    color: #ffffff;
+    margin: 0 0 6px 0;
+}
+
+/* Step 3c: margin-top set to 0 to remove extra space above h2, keeping padding consistent */
+h2 {
+    font-family: 'Orbitron', monospace;
+    font-size: 18px;
+    font-weight: 700;
+    color: #4a4e69;
+    margin-top: 0;
+}
+
+h3 {
+    font-family: 'Orbitron', monospace;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a4e69;
+    border-left: 3px solid #4a4e69;
+    padding-left: 10px;
+    margin-top: 24px;
+}
+
+p {
+    color: #4a4e69;
+}
+
+li {
+    color: #4a4e69;
+}
+
+a {
+    color: #4a4e69;
+    text-decoration: none;
+}
+
+
+/* Content Wrap
+------------------------------------*/
+/* Step 1b: content-wrap added to global section for reuse across all page sections */
+/* Step 1d: switched from width to max-width for flexibility */
+/* Step 3a: padding: 50px added so all sections share consistent spacing */
+/* Step 4f: overflow: hidden added to clear floated children inside the wrapper */
+.content-wrap {
+    max-width: 950px;
+    margin: 0 auto;
+    padding: 50px;
+    overflow: hidden;
+}
+
+
+/* Header & Footer
+------------------------------------*/
+header {
+    background-color: #1a1a2e;
+}
+
+/* Step 4d: margin: 0 on header h1 and h2 to tighten up spacing between name and tagline */
+header h1,
+header h2 {
+    margin: 0;
+}
+
+header .header-text h2 {
+    color: #c9ada7;
+    font-size: 14px;
+    margin: 0 0 10px 0;
+}
+
+header .header-text p {
+    color: #9a8c9899;
+    font-size: 13px;
+    margin: 0;
+}
+
+/* Step 3e: text-align: center added so footer content and child elements are centered */
+footer {
+    background-color: #1a1a2e;
+    text-align: center;
+}
+
+footer p {
+    color: #4a4e6966;
+    font-size: 14px;
+    margin: 10px 0 0 0;
+}
+
+footer a {
+    color: #4a4e69;
+    padding: 0 18px;
+}
+
+/* Step 3g: descendant selector targets only links inside .contact-info
+            padding and inline-block allow side-by-side layout with proper spacing */
+.contact-info a {
+    padding: 10px;
+    display: inline-block;
+}
+
+
+/* Work Experience
+------------------------------------*/
+section:nth-of-type(1) {
+    background-color: #ffffff;
+    border: 1px solid #c9ada7;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Projects */
+section:nth-of-type(2) {
+    background-color: #f2e9e4;
+    border: 1px solid #c9ada7;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+/* Education */
+section:nth-of-type(3) {
+    background-color: #ffffff;
+    border: 1px solid #c9ada7;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+
+/* Job alternating rows
+------------------------------------*/
+.job {
+    padding: 16px 20px;
+    border-top: 1px solid #c9ada750;
+    overflow: hidden;
+}
+
+.job_light {
+    background-color: #ffffff;
+}
+
+.job_alt {
+    background-color: #f2e9e4;
+}
+
+
+/* Profile Image
+------------------------------------*/
+/* Step 4b: profile-img class added to target only the header image */
+/* Step 4c: border-radius: 50% makes the image circular */
+/* Step 4f: width, float, and margin-right removed from here; now handled by .column-narrow */
+.profile-img {
+    border-radius: 50%;
+    width: 200px;
+    object-fit: cover;
+}
+
+
+/* Columns
+------------------------------------*/
+/* Step 6a: reusable column classes for two-column layout in header and work sections */
+/* Step 6d: column-narrow styles — width 30%, float left, padding-right, min-height */
+/* Note: padding-right changed from 3% to 1% for custom spacing — per student preference */
+.column-narrow {
+    width: 30%;
+    float: left;
+    padding-right: 1%;
+    min-height: 175px;
+}
+
+/* Step 6e: column-wide styles — width 70%, float left, min-height */
+.column-wide {
+    width: 70%;
+    float: left;
+    min-height: 225px;
+}
+
+
+/* Animation
+------------------------------------*/
+.slide_left {
+    opacity: 0;
+    transform: translateX(-80px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide_right {
+    opacity: 0;
+    transform: translateX(80px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.slide_left.visible,
+.slide_right.visible {
+    opacity: 1;
+    transform: translateX(0);
+}

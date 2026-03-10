@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Andrew Ponce | Resume</title>
 
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,18 +16,15 @@
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
 
     <!-- // Intro -->
     <header>
-        <!-- Step 1a: content-wrap added inside header, enclosing all header content -->
         <div class="content-wrap">
-            <!-- Step 6b: column-narrow class added to img tag -->
-            <!-- Step 4b: profile-img class added to img tag -->
-            <!-- Step 4f: float and width moved to column-narrow; keeping border-radius in CSS -->
+
             <img class="profile-img column-narrow" src="images/pfp.png" alt="Andrew Ponce">
 
-            <!-- Step 6c: column-wide div wrapping h1, h2, and p in header -->
             <div class="column-wide header-text">
                 <h1>Andrew Ponce</h1>
                 <h2>Full-Stack Developer & Data Analyst</h2>
@@ -32,23 +32,30 @@
             </div>
         </div>
     </header>
+    <!-- // hw 8 additions -->
+    <!-- // navigation menu -->
+    <nav>
+        <div class="content-wrap">
+            <a href="#work">Work</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="downloads/resum3.pdf" download>PDF</a> <!-- adding downloadable resume -->
+        </div>
+    </nav>
 
     <main>
 
         <!-- // Work Experience -->
         <section class="slide_left">
-            <!-- Step 2a: content-wrap added in work section, right after section tag -->
-            <div class="content-wrap">
+            <div id="work" class="content-wrap"> <!-- adding id for navigation -->
                 <h2>Work Experience</h2>
 
                 <div class="job job_light">
-                    <!-- Step 6g-i: column-narrow wrapping job title, company, and date -->
                     <div class="column-narrow">
                         <h3>Assistant Lead</h3>
                         <p>Vons – D.U.G</p>
                         <p> 2022 – 2026</p>
                     </div>
-                    <!-- Step 6g-ii: column-wide wrapping job summary and list -->
                     <div class="column-wide">
                         <p>Onboarded and trained 10+ team members in customer service, health & safety compliance, and standard operational procedures.</p>
                         <ul>
@@ -65,8 +72,7 @@
 
         <!-- // Projects -->
         <section class="slide_right">
-            <!-- Step 2a: content-wrap added in projects section -->
-            <div class="content-wrap">
+            <div id="projects" class="content-wrap"> <!-- adding id for navigation -->
                 <h2>Projects</h2>
 
                 <div class="job job_light">
@@ -132,15 +138,13 @@
 
         <!-- // Education -->
         <section class="slide_left">
-            <!-- Step 2b: content-wrap added in education section -->
-            <div class="content-wrap">
+            <div id="education" class="content-wrap">
                 <h2>Education</h2>
 
                 <div class="job job_light">
                     <h3>B.S. Computer Science — CSUN</h3>
                     <p>Minor in Data Science</p>
                     <p>GPA: 3.6 | In Progress</p>
-                    <p>Coursework includes databases, statistics, theory of computation, and data mining.</p>
                 </div>
 
                 <div class="job job_alt">
@@ -156,21 +160,20 @@
 
     <!-- // Footer & contact info -->
     <footer>
-        <!-- Step 2b: content-wrap added in footer section -->
         <div class="content-wrap">
             <h1>Let's Keep in Touch!</h1>
-            <!-- Step 3f: contact-info div wrapping all anchor tags -->
             <div class="contact-info">
-                <a href="mailto:andyponce654@gmail.com">gmail</a>
-                <a href="https://www.linkedin.com/in/andyponce/" target="_blank">LinkedIn</a>
-                <a href="https://github.com/AndyP0nce" target="_blank">GitHub</a>
+                <a class="fa-solid fa-envelope" href="mailto:andyponce654@gmail.com"></a>
+                <a class="fa-brands fa-linkedin" href="https://www.linkedin.com/in/andyponce/" target="_blank"></a>
+                <a class="fa-brands fa-github" href="https://github.com/AndyP0nce" target="_blank"></a>
             </div>
             <p>Copyright 2026 by Andrew Ponce</p>
         </div>
     </footer>
 
     <script>
-        const observer = new IntersectionObserver((entries) => {
+        // Slide-in animation observer
+        const animObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
@@ -178,7 +181,7 @@
             });
         }, { threshold: 0.1 });
 
-        document.querySelectorAll('.slide_left, .slide_right').forEach(el => observer.observe(el));
+        document.querySelectorAll('.slide_left, .slide_right').forEach(el => animObserver.observe(el));
     </script>
 
 </body>

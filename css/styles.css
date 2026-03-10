@@ -1,5 +1,4 @@
-/* Step 5: Box Model Fix — applied globally to every element
-------------------------------------*/
+/*Box Model Fix — applied globally to every element*/
 *, *::before, *::after {
     box-sizing: border-box;
 }
@@ -21,7 +20,6 @@ body {
     font-family: 'JetBrains Mono', monospace;
     font-size: 14px;
     line-height: 1.8;
-    /* Step 3d: margin set to 0 to remove the default white border around the page */
     margin: 0;
     padding: 0;
 }
@@ -34,7 +32,6 @@ h1 {
     margin: 0 0 6px 0;
 }
 
-/* Step 3c: margin-top set to 0 to remove extra space above h2, keeping padding consistent */
 h2 {
     font-family: 'Orbitron', monospace;
     font-size: 18px;
@@ -65,14 +62,49 @@ a {
     color: #4a4e69;
     text-decoration: none;
 }
+/* hw 8 additions */
+/* navigation menu */
+nav {
+    background-color: #1a1a2e;
+    padding: 0;
+    position: sticky; /* keeps nav at top of viewport when scrolling */
+    top: 0; /* ensures nav sticks to top */
+    z-index: 100; /* ensures nav stays above other content */
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid #c9ada730;
+}
 
+nav .content-wrap {
+    padding: 0 50px; /* horizontal padding for nav content */
+    display: flex;   /* use flexbox for horizontal layout */
+    justify-content: center; /* center nav items */
+    gap: 8px;
+}
+
+nav a {
+    color: #9a8c98;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 14px;
+    display: inline-block;
+    border-bottom: 3px solid transparent;
+}
+/* Hover effect for nav links */
+nav a:hover {
+    color: #ffffff;
+    background-color: #ffffff0d;
+    border-bottom-color: #c9ada780;
+}
+/* Active nav link */
+nav a.active {
+    color: #ffffff;
+    border-bottom-color: #c9ada7;
+    background-color: #ffffff12;
+}
 
 /* Content Wrap
 ------------------------------------*/
-/* Step 1b: content-wrap added to global section for reuse across all page sections */
-/* Step 1d: switched from width to max-width for flexibility */
-/* Step 3a: padding: 50px added so all sections share consistent spacing */
-/* Step 4f: overflow: hidden added to clear floated children inside the wrapper */
 .content-wrap {
     max-width: 950px;
     margin: 0 auto;
@@ -81,13 +113,11 @@ a {
 }
 
 
-/* Header & Footer
-------------------------------------*/
+/* Header */
 header {
     background-color: #1a1a2e;
 }
 
-/* Step 4d: margin: 0 on header h1 and h2 to tighten up spacing between name and tagline */
 header h1,
 header h2 {
     margin: 0;
@@ -105,7 +135,7 @@ header .header-text p {
     margin: 0;
 }
 
-/* Step 3e: text-align: center added so footer content and child elements are centered */
+/* Footer */
 footer {
     background-color: #1a1a2e;
     text-align: center;
@@ -119,11 +149,16 @@ footer p {
 
 footer a {
     color: #4a4e69;
+    font-size: 40px;
     padding: 0 18px;
 }
 
-/* Step 3g: descendant selector targets only links inside .contact-info
-            padding and inline-block allow side-by-side layout with proper spacing */
+a:hover {
+    color: #ffffff;
+    background-color: #ffffff0d;
+    border-radius: 4px;
+}
+
 .contact-info a {
     padding: 10px;
     display: inline-block;
@@ -148,13 +183,38 @@ section:nth-of-type(2) {
 }
 
 /* Education */
-section:nth-of-type(3) {
-    background-color: #ffffff;
+/* Background image with overlay for readability */
+section:nth-of-type(3) { /* education is 3rd on the pagesection */    
+    background-image:
+        linear-gradient(
+            to bottom,
+            rgba(26, 26, 46, 0.75),
+            rgba(201, 173, 167, 0.5)
+        ),
+        url('../images/000058350012.jpg');
+    background-size: cover;     /* ensure the image covers the entire section */
+    background-position: center;
     border: 1px solid #c9ada7;
-    margin: 20px auto;
-    max-width: 800px;
+    margin: 0;
+    max-width: 100%;
 }
 
+
+/* Education section text — readable over background image */
+section:nth-of-type(3) h2,
+section:nth-of-type(3) h3,
+section:nth-of-type(3) p {
+    color: #f2e9e4;
+}
+
+section:nth-of-type(3) h3 {
+    border-left-color: #c9ada7;
+}
+
+section:nth-of-type(3) .job_light,
+section:nth-of-type(3) .job_alt {
+    background-color: transparent;
+}
 
 /* Job alternating rows
 ------------------------------------*/
@@ -173,11 +233,8 @@ section:nth-of-type(3) {
 }
 
 
-/* Profile Image
-------------------------------------*/
-/* Step 4b: profile-img class added to target only the header image */
-/* Step 4c: border-radius: 50% makes the image circular */
-/* Step 4f: width, float, and margin-right removed from here; now handled by .column-narrow */
+/* Profile Image */
+
 .profile-img {
     border-radius: 50%;
     width: 200px;
@@ -185,11 +242,8 @@ section:nth-of-type(3) {
 }
 
 
-/* Columns
-------------------------------------*/
-/* Step 6a: reusable column classes for two-column layout in header and work sections */
-/* Step 6d: column-narrow styles — width 30%, float left, padding-right, min-height */
-/* Note: padding-right changed from 3% to 1% for custom spacing — per student preference */
+/* Columns */
+
 .column-narrow {
     width: 30%;
     float: left;
@@ -197,7 +251,6 @@ section:nth-of-type(3) {
     min-height: 175px;
 }
 
-/* Step 6e: column-wide styles — width 70%, float left, min-height */
 .column-wide {
     width: 70%;
     float: left;
@@ -205,8 +258,7 @@ section:nth-of-type(3) {
 }
 
 
-/* Animation
-------------------------------------*/
+/* Animation */
 .slide_left {
     opacity: 0;
     transform: translateX(-80px);

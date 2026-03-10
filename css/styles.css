@@ -194,6 +194,7 @@ section:nth-of-type(3) { /* education is 3rd on the pagesection */
         url('../images/000058350012.jpg');
     background-size: cover;     /* ensure the image covers the entire section */
     background-position: center;
+    background-attachment: fixed; /* parallax effect, doesnt work (maybe the img too small) */
     border: 1px solid #c9ada7;
     margin: 0;
     max-width: 100%;

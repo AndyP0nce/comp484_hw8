@@ -87,7 +87,7 @@ nav a {
     font-weight: 700;
     letter-spacing: 0.1em;
     padding: 14px;
-    display: inline-block;
+    display: inline-block; /* ensures padding is clickable */
     border-bottom: 3px solid transparent;
 }
 /* Hover effect for nav links */
@@ -95,12 +95,6 @@ nav a:hover {
     color: #ffffff;
     background-color: #ffffff0d;
     border-bottom-color: #c9ada780;
-}
-/* Active nav link */
-nav a.active {
-    color: #ffffff;
-    border-bottom-color: #c9ada7;
-    background-color: #ffffff12;
 }
 
 /* Content Wrap

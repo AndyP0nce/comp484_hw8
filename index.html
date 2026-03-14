@@ -19,6 +19,17 @@
 
 <body>
 
+                <!-- // hw 8 additions -->
+    <!-- // navigation menu -->
+    <nav>
+        <div class="content-wrap">
+            <a href="#work">Work</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="downloads/resum3.pdf" download>PDF</a> <!-- adding downloadable resume -->
+        </div>
+    </nav>
+
     <!-- // Intro -->
     <header>
         <div class="content-wrap">
@@ -32,16 +43,6 @@
             </div>
         </div>
     </header>
-    <!-- // hw 8 additions -->
-    <!-- // navigation menu -->
-    <nav>
-        <div class="content-wrap">
-            <a href="#work">Work</a>
-            <a href="#projects">Projects</a>
-            <a href="#education">Education</a>
-            <a href="downloads/resum3.pdf" download>PDF</a> <!-- adding downloadable resume -->
-        </div>
-    </nav>
 
     <main>
 
@@ -173,13 +174,13 @@
 
     <script>
         // Slide-in animation observer
-        const animObserver = new IntersectionObserver((entries) => {
+        const animObserver = new IntersectionObserver((entries) => { // callback function to add 'visible' class when elements are in view
             entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                if (entry.isIntersecting) { 
+                    entry.target.classList.add('visible'); // add 'visible' class to trigger CSS animation
                 }
             });
-        }, { threshold: 0.1 });
+        }, { threshold: 0.2 }); // trigger when 20% of the element is visible
 
         document.querySelectorAll('.slide_left, .slide_right').forEach(el => animObserver.observe(el));
     </script>
